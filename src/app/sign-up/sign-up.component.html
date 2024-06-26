@@ -1,0 +1,76 @@
+<div class="sign-up-form text-center">
+  <form class="form-signin" (ngSubmit)="onSubmit()" #loginForm="ngForm">   
+    <img
+      class="mb-3"
+      src="https://idev.pt/chef-bestie/icon-chef-bestie.png"
+      alt=""
+      width="50"
+      height="60"
+    />
+    <h1 class="mb-5">Please register</h1>
+
+    <label for="inputFirstName" class="sr-only">First name</label>
+    <input
+      type="text"
+      id="firstName"
+      class="form-control"
+      placeholder="First name"
+      required 
+      [(ngModel)]="signUpData.firstName"
+      name="firstName"
+      #text="ngModel"   
+    />
+
+    <label for="inputLastName" class="sr-only">Last name</label>
+    <input
+      type="text"
+      id="lastName"
+      class="form-control"
+      placeholder="Last name"
+      required 
+      [(ngModel)]="signUpData.lastName"
+      name="lastName"
+      #text="ngModel"   
+    />
+
+    <label for="inputEmail" class="sr-only">Email address</label>
+    <input
+      type="email"
+      id="email"
+      class="form-control"
+      placeholder="Email address"
+      required 
+      [(ngModel)]="signUpData.email"
+      name="email"
+      #email="ngModel"   
+    />
+    <div class="help is-error" style="font-size: x-small" *ngIf="email.invalid && (email.dirty || email.touched)" >
+    Your email is required and needs to be a valid email. 
+    </div>
+
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input
+      type="password"
+      id="password"
+      class="form-control"
+      placeholder="Password"
+      required
+      [(ngModel)]="signUpData.password"
+      name="password" 
+      #password="ngModel"      
+    />
+    <div *ngIf="password.invalid && (password.dirty || password.touched)" class="error" style="font-size: x-small">
+      Password is required
+    </div>
+    
+    <div class="checkbox mb-3"></div>
+    <button 
+    class="btn btn-lg btn-primary btn-block" 
+    type="submit">
+    Register
+    </button>
+
+    
+
+  </form>
+</div>

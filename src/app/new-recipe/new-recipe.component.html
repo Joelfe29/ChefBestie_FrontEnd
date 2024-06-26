@@ -1,0 +1,113 @@
+<div class="new-recipe-form text-center">
+    <form class="form-group" [formGroup]="form" (ngSubmit)="onSubmit()">
+      
+      <h1 class="fw-bold mb-5 fs-2">Post your recipe</h1>
+      
+      <!-- Title input -->
+      <label for="inputTitle" class="sr-only">Title</label>
+      <input
+        type="text"
+        id="title"
+        class="form-control mb-3"
+        placeholder="Title"        
+        formControlName="title"
+        required              
+      />
+      
+      <!-- Description input -->
+      <label for="inputDescription" class="sr-only">Description</label>
+      <input
+        type="text"
+        id="description"
+        class="form-control mb-3"
+        placeholder="Description"        
+        formControlName= "description"
+        required      
+      />
+      
+      <!-- Category input -->
+      <label for="inputCategory" class="sr-only">Category</label>
+      <input
+        type="text"
+        id="category"
+        class="form-control mb-3"
+        placeholder="Category"        
+        formControlName="category"
+        required     
+      />
+      
+      <!-- Time to make input -->
+      <label for="inputTime" class="sr-only">Time To Make</label>
+      <input
+        type="text"
+        id="time"
+        class="form-control mb-3"
+        placeholder="30 min/ 1h/ 2h/ ..."        
+        formControlName="timeToMake"
+        required               
+      />
+      
+      <!-- Drop down 3 levels of difficulty -->
+      <div class="form-group">
+        <label for="inputDifficulty">Difficulty</label>
+        <select         
+        id="difficulty" 
+        class="form-control mb-3"         
+        formControlName="difficulty"
+        required               
+        >
+          <option>Easy</option>
+          <option>Medium</option>
+          <option>Hard</option>
+        </select>
+      </div>
+    
+
+      <!-- Dinamic input for ingredients -->
+      <div class="container mt-5">
+        <p>Ingredients</p>        
+          <div formArrayName="ingredients">
+            <div *ngFor="let ingredient of ingredients.controls; let i = index" [formGroupName]="i" class="form-group d-flex mb-2">
+              <input 
+              formControlName="name"
+              type="text" 
+              class="form-control me-2" 
+              placeholder="Name" 
+              required                               
+              />
+
+              <input 
+              formControlName="quantity" 
+              type="text" 
+              class="form-control me-2" 
+              placeholder="Quantity"
+              required                                      
+              />
+
+              <input 
+              formControlName="unity"              
+              type="text" 
+              class="form-control me-2" 
+              placeholder="g, kg, l, ml, etc"
+              required                                    
+              />
+
+              <button type="button" class="btn btn-danger" (click)="removeIngredient(i)">Remove</button>
+            </div>
+          </div>
+          <button type="button" class="btn btn-success mt-2" (click)="addIngredient()">Add ingredient</button>       
+      </div>
+        
+
+      <!-- Submit recipe button -->
+      <div class="checkbox mb-3 mt-3" >
+        <button class="btn btn-lg btn-primary btn-block" type="submit">
+          Submit
+        </button>
+      </div>
+    </form>
+      
+    
+      
+
+      

@@ -1,0 +1,52 @@
+
+
+<div *ngIf="recipes.length === 0">
+    Loading recipes...
+  </div>
+  <div *ngIf="recipes.length > 0">
+    <div class="recipe-card">    
+      <div class="album py-5 bg-light">
+         <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+             <div class="col" *ngFor="let recipe of recipes">
+             <div class="card shadow-sm">
+            <div
+              class="image"
+              preserveAspectRatio="xMidYMid slice"
+              focusable="false"
+            >
+              <img
+                class="card-img-top"
+                width="100%"
+                height="mx-auto"
+                src="https://images.pexels.com/photos/357737/pexels-photo-357737.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                alt="Card image"
+              />
+            </div>
+            <div class="card-body">
+              <h1 class="card-title">{{ recipe.title }}</h1>
+              <p class="card-text"><b>Description:</b> {{ recipe.description }}</p>
+              <p class="card-text"><b>Category:</b> {{ recipe.category }}</p>
+              <p class="card-text"><b>Time to make:</b> {{ recipe.timeToMake }}</p>
+              <p class="card-text"><b>Difficulty:</b> {{ recipe.difficulty }}</p>
+              <div>
+                <strong>Ingredients:</strong>
+                <ul>
+                  <li *ngFor="let ingredient of recipe.ingredients">
+                    {{ ingredient.name }} - {{ ingredient.quantity }} {{ ingredient.unity }}
+                  </li>
+                </ul>
+              </div>
+              <div
+                class="d-flex justify-content-between align-items-center"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+
+    
+

@@ -1,0 +1,47 @@
+<header class="p-3 bg-dark text-white" >
+  <div class="container">
+    <div
+      class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
+    >
+      <a
+        href="/"
+        class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"
+      >
+        <img
+          class="mb-0 me-5"
+          src="https://idev.pt/chef-bestie/logo-chef-bestie.png"
+          alt="Logo"
+          width="520"
+          height="100"
+        />
+      </a>      
+
+     <!-- Menu for users who are not logged in -->
+     <ul *ngIf="!LoggedIn" class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+      <button type="button" class="btn btn-outline-light me-2" routerLink="/">Home</button>
+      <button type="button" class="btn btn-outline-light me-2" routerLink="/recipes">Recipes</button>
+      <button type="button" class="btn btn-warning me-2" routerLink="/login">Login</button>
+      <button type="button" class="btn btn-warning me-2" routerLink="/signup">Sign-up</button>
+    </ul>
+
+    <!-- Menu for logged in users who are not admins -->
+    <ul *ngIf="LoggedIn && !LoggedAsAdmin" class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+      <button type="button" class="btn btn-outline-light me-2" routerLink="/">Home</button>
+      <button type="button" class="btn btn-outline-light me-2" routerLink="/recipes">Recipes</button>
+      <button type="button" class="btn btn-outline-light me-2" routerLink="/newrecipe">New recipe</button>
+      <button type="button" class="btn btn-secondary me-2" (click)="onLogout()">Logout</button>
+    </ul>
+
+    <!-- Menu for logged in admin users -->
+    <ul *ngIf="LoggedIn && LoggedAsAdmin" class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+      <button type="button" class="btn btn-outline-light me-2" routerLink="/">Home</button>
+      <button type="button" class="btn btn-outline-light me-2" routerLink="/recipes">Recipes</button>
+      <button type="button" class="btn btn-outline-light me-2" routerLink="/newrecipe">New recipe</button>
+      <button type="button" class="btn btn-outline-light me-2" routerLink="/recipesToApprove">Recipes to approve</button>
+      <button type="button" class="btn btn-outline-light me-2" routerLink="/users">Users</button>
+      <button type="button" class="btn btn-secondary me-2" (click)="onLogout()">Logout</button>
+    </ul>
+
+    </div>
+  </div>
+</header>
